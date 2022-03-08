@@ -1,0 +1,27 @@
+name: Deploy to gh-pages
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install and build
+        run: |
+          npm install
+          npm run build
+
+      - name: Simple deploy with git
+        uses: rdarida/simple-github-pages-deploy-action@v1
+        with: # optional
+          git-user: 'nurulaqmarinaa'
+          git-email: 'aqmarriinaa98@gmail.com'
+          git-base-folder: 'nurulaqmarina.github.io'
+          commit-message: ''
+          branch: 'main'
